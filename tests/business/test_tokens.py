@@ -1,10 +1,10 @@
 import unittest.mock
 
 import pytest
-from pantos.common.blockchains.base import Blockchain
+from vision.common.blockchains.base import Blockchain
 
-from pantos.client.library.business.tokens import TokenInteractor
-from pantos.client.library.business.tokens import TokenInteractorError
+from vision.client.library.business.tokens import TokenInteractor
+from vision.client.library.business.tokens import TokenInteractorError
 
 
 class MockedBlockchainClient:
@@ -29,7 +29,7 @@ def test_convert_amount_to_main_unit_correct_zero_subunit():
 @unittest.mock.patch.object(TokenInteractor,
                             '_TokenInteractor__token_id_to_token_address')
 @unittest.mock.patch(
-    'pantos.client.library.business.tokens.get_blockchain_client',
+    'vision.client.library.business.tokens.get_blockchain_client',
     return_value=MockedBlockchainClient(8))
 def test_convert_amount_to_main_unit_correct_non_zero_subunit(
         mocked_blockchain_client, mocked_token_id_to_token_address,
@@ -42,7 +42,7 @@ def test_convert_amount_to_main_unit_correct_non_zero_subunit(
 @unittest.mock.patch.object(TokenInteractor,
                             '_TokenInteractor__token_id_to_token_address')
 @unittest.mock.patch(
-    'pantos.client.library.business.tokens.get_blockchain_client',
+    'vision.client.library.business.tokens.get_blockchain_client',
     return_value=MockedBlockchainClient(-1))
 def test_convert_amount_to_main_unit_error(mocked_blockchain_client,
                                            mocked_token_id_to_token_address,
@@ -66,7 +66,7 @@ def test_convert_amount_to_subunit_correct_zero():
 @unittest.mock.patch.object(TokenInteractor,
                             '_TokenInteractor__token_id_to_token_address')
 @unittest.mock.patch(
-    'pantos.client.library.business.tokens.get_blockchain_client',
+    'vision.client.library.business.tokens.get_blockchain_client',
     return_value=MockedBlockchainClient(8))
 def test_convert_amount_to_subunit_correct_non_zero(
         mocked_blockchain_client, mocked_token_id_to_token_address,

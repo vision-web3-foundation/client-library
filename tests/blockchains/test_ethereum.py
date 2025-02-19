@@ -3,16 +3,16 @@ import unittest.mock
 import eth_account.account
 import eth_account.messages
 import pytest
-from pantos.common.blockchains.base import BlockchainUtilitiesError
-from pantos.common.blockchains.enums import Blockchain
+from vision.common.blockchains.base import BlockchainUtilitiesError
+from vision.common.blockchains.enums import Blockchain
 
-from pantos.client.library.blockchains.ethereum import _EIP712_DOMAIN_NAME
-from pantos.client.library.blockchains.ethereum import \
+from vision.client.library.blockchains.ethereum import _EIP712_DOMAIN_NAME
+from vision.client.library.blockchains.ethereum import \
     _TRANSFER_FROM_MESSAGE_TYPES
-from pantos.client.library.blockchains.ethereum import _TRANSFER_MESSAGE_TYPES
-from pantos.client.library.blockchains.ethereum import EthereumClient
-from pantos.client.library.blockchains.ethereum import EthereumClientError
-from pantos.client.library.blockchains.ethereum import UnknownTransferError
+from vision.client.library.blockchains.ethereum import _TRANSFER_MESSAGE_TYPES
+from vision.client.library.blockchains.ethereum import EthereumClient
+from vision.client.library.blockchains.ethereum import EthereumClientError
+from vision.client.library.blockchains.ethereum import UnknownTransferError
 
 
 @pytest.fixture
@@ -36,7 +36,7 @@ def eip712_domain_data(protocol_version, chain_id, forwarder_address):
 @pytest.fixture
 def transfer_message_data(transfer_signature_request, sender_address,
                           sender_nonce, hub_address, forwarder_address,
-                          pan_token_address):
+                          vsn_token_address):
     return {
         'request': {
             'sender': sender_address,
@@ -49,16 +49,16 @@ def transfer_message_data(transfer_signature_request, sender_address,
             'validUntil': transfer_signature_request.valid_until
         },
         'blockchainId': Blockchain.ETHEREUM.value,
-        'pantosHub': hub_address,
-        'pantosForwarder': forwarder_address,
-        'pantosToken': pan_token_address
+        'visionHub': hub_address,
+        'visionForwarder': forwarder_address,
+        'visionToken': vsn_token_address
     }
 
 
 @pytest.fixture
 def transfer_from_message_data(transfer_from_signature_request, sender_address,
                                sender_nonce, hub_address, forwarder_address,
-                               pan_token_address):
+                               vsn_token_address):
     return {
         'request': {
             'destinationBlockchainId': transfer_from_signature_request.
@@ -77,9 +77,9 @@ def transfer_from_message_data(transfer_from_signature_request, sender_address,
             'validUntil': transfer_from_signature_request.valid_until
         },
         'sourceBlockchainId': Blockchain.ETHEREUM.value,
-        'pantosHub': hub_address,
-        'pantosForwarder': forwarder_address,
-        'pantosToken': pan_token_address
+        'visionHub': hub_address,
+        'visionForwarder': forwarder_address,
+        'visionToken': vsn_token_address
     }
 
 
@@ -179,7 +179,7 @@ def test_is_valid_recipient_address(ethereum_client, recipient_address,
 @unittest.mock.patch.object(EthereumClient, '_get_utilities')
 @unittest.mock.patch.object(EthereumClient, '_get_config')
 @unittest.mock.patch.object(EthereumClient, '_create_hub_contract')
-@unittest.mock.patch('pantos.client.library.blockchains.ethereum.secrets')
+@unittest.mock.patch('vision.client.library.blockchains.ethereum.secrets')
 def test_compute_transfer_signature_correct(
         mock_secrets, mock_create_hub_contract, mock_get_config,
         mock_get_utilities, ethereum_client, blockchain_config,
@@ -225,7 +225,7 @@ def test_compute_transfer_signature_node_connection_error(
 @unittest.mock.patch.object(EthereumClient, '_get_utilities')
 @unittest.mock.patch.object(EthereumClient, '_get_config')
 @unittest.mock.patch.object(EthereumClient, '_create_hub_contract')
-@unittest.mock.patch('pantos.client.library.blockchains.ethereum.secrets')
+@unittest.mock.patch('vision.client.library.blockchains.ethereum.secrets')
 def test_compute_transfer_from_signature_correct(
         mock_secrets, mock_create_hub_contract, mock_get_config,
         mock_get_utilities, ethereum_client, blockchain_config,

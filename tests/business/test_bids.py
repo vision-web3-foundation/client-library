@@ -2,12 +2,12 @@ import contextlib
 import unittest
 
 import pytest
-from pantos.common.blockchains.base import Blockchain
-from pantos.common.servicenodes import ServiceNodeClient
+from vision.common.blockchains.base import Blockchain
+from vision.common.servicenodes import ServiceNodeClient
 
-from pantos.client.library.business.bids import BidInteractor
-from pantos.client.library.business.bids import BidInteractorError
-from pantos.client.library.business.tokens import TokenInteractor
+from vision.client.library.business.bids import BidInteractor
+from vision.client.library.business.bids import BidInteractorError
+from vision.client.library.business.tokens import TokenInteractor
 
 
 class _Break(Exception):
@@ -100,7 +100,7 @@ def test_find_cheapest_service_node_bid_error(
                                                       Blockchain.CRONOS)
 
 
-@unittest.mock.patch('pantos.client.library.business.bids.config',
+@unittest.mock.patch('vision.client.library.business.bids.config',
                      {'service_nodes': {
                          'timeout': 1
                      }})
@@ -111,7 +111,7 @@ def test_find_cheapest_service_node_bid_error(
 @unittest.mock.patch.object(TokenInteractor, 'convert_amount_to_main_unit',
                             lambda _0, _1, _2, z: z)
 @unittest.mock.patch.object(ServiceNodeClient, 'bids')
-@unittest.mock.patch('pantos.client.library.business.bids.'
+@unittest.mock.patch('vision.client.library.business.bids.'
                      'get_blockchain_client')
 def test_retrieve_service_node_bids_correct(mocked_get_blockchain_client,
                                             mocked_service_node_bids,
@@ -133,7 +133,7 @@ def test_retrieve_service_node_bids_correct(mocked_get_blockchain_client,
     assert list(bids.values()) == [bids_1, bids_1]
 
 
-@unittest.mock.patch('pantos.client.library.business.bids.config',
+@unittest.mock.patch('vision.client.library.business.bids.config',
                      {'service_nodes': {
                          'timeout': 1
                      }})
@@ -142,7 +142,7 @@ def test_retrieve_service_node_bids_correct(mocked_get_blockchain_client,
                      _MockThreadPoolExecutor)
 @unittest.mock.patch('threading.Thread', _MockThread)
 @unittest.mock.patch.object(ServiceNodeClient, 'bids')
-@unittest.mock.patch('pantos.client.library.business.bids.'
+@unittest.mock.patch('vision.client.library.business.bids.'
                      'get_blockchain_client')
 def test_retrieve_service_node_bids_not_fee_in_main_unint_correct(
         mocked_get_blockchain_client, mocked_service_node_bids, service_node_1,
@@ -163,7 +163,7 @@ def test_retrieve_service_node_bids_not_fee_in_main_unint_correct(
     assert list(bids.values()) == [bids_1, bids_1]
 
 
-@unittest.mock.patch('pantos.client.library.business.bids.config',
+@unittest.mock.patch('vision.client.library.business.bids.config',
                      {'service_nodes': {
                          'timeout': 1
                      }})
@@ -174,7 +174,7 @@ def test_retrieve_service_node_bids_not_fee_in_main_unint_correct(
 @unittest.mock.patch.object(TokenInteractor, 'convert_amount_to_main_unit',
                             lambda _0, _1, _2, z: z)
 @unittest.mock.patch.object(ServiceNodeClient, 'bids')
-@unittest.mock.patch('pantos.client.library.business.bids.'
+@unittest.mock.patch('vision.client.library.business.bids.'
                      'get_blockchain_client')
 def test_retrieve_service_node_bids_unreachable_service_nodes(
         mocked_get_blockchain_client, mocked_service_node_bids, service_node_1,
@@ -194,7 +194,7 @@ def test_retrieve_service_node_bids_unreachable_service_nodes(
     assert bids == {}
 
 
-@unittest.mock.patch('pantos.client.library.business.bids.'
+@unittest.mock.patch('vision.client.library.business.bids.'
                      'get_blockchain_client')
 def test_retrieve_service_node_bids_general_error(
         mocked_get_blockchain_client):

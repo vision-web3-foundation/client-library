@@ -1,4 +1,4 @@
-PYTHON_FILES := pantos/client tests
+PYTHON_FILES := vision/client tests
 
 .PHONY: check-version
 check-version:
@@ -59,17 +59,17 @@ test:
 
 .PHONY: coverage
 coverage:
-	poetry run python3 -m pytest --cov-report term-missing --cov=pantos tests
+	poetry run python3 -m pytest --cov-report term-missing --cov=vision tests
 
 .PHONY: local-common
 local-common:
-ifndef DEV_PANTOS_COMMON
-	$(error Please define DEV_PANTOS_COMMON variable)
+ifndef DEV_VISION_COMMON
+	$(error Please define DEV_VISION_COMMON variable)
 endif
-	$(eval CURRENT_COMMON := $(shell echo .venv/lib/python3.*/site-packages/pantos/common))
+	$(eval CURRENT_COMMON := $(shell echo .venv/lib/python3.*/site-packages/vision/common))
 	@if [ -d "$(CURRENT_COMMON)" ]; then \
 		rm -rf "$(CURRENT_COMMON)"; \
-		ln -s "$(DEV_PANTOS_COMMON)" "$(CURRENT_COMMON)"; \
+		ln -s "$(DEV_VISION_COMMON)" "$(CURRENT_COMMON)"; \
 	else \
 		echo "Directory $(CURRENT_COMMON) does not exist"; \
 	fi

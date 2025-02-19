@@ -1,4 +1,4 @@
-"""Shared fixtures for all pantos.client.library package tests.
+"""Shared fixtures for all vision.client.library package tests.
 
 """
 import uuid
@@ -6,15 +6,15 @@ import uuid
 import hexbytes
 import pytest
 import web3
-from pantos.common.blockchains.enums import Blockchain
-from pantos.common.entities import ServiceNodeBid
-from pantos.common.servicenodes import ServiceNodeClient
-from pantos.common.servicenodes import ServiceNodeTransferStatus
-from pantos.common.types import BlockchainAddress
-from pantos.common.types import PrivateKey
+from vision.common.blockchains.enums import Blockchain
+from vision.common.entities import ServiceNodeBid
+from vision.common.servicenodes import ServiceNodeClient
+from vision.common.servicenodes import ServiceNodeTransferStatus
+from vision.common.types import BlockchainAddress
+from vision.common.types import PrivateKey
 
-from pantos.client.library.blockchains.base import BlockchainClient
-from pantos.client.library.protocol import get_supported_protocol_versions
+from vision.client.library.blockchains.base import BlockchainClient
+from vision.client.library.protocol import get_supported_protocol_versions
 
 _BLOCK_NUMBER = 1
 
@@ -25,7 +25,7 @@ _HUB_ADDRESS = BlockchainAddress('0x308eF9f94a642A31D9F9eA83f183544027A9742D')
 _FORWARDER_ADDRESS = BlockchainAddress(
     '0x308eF9f94a642A31D9F9eA83f183544027A9742D')
 
-_PAN_TOKEN_ADDRESS = BlockchainAddress(
+_VSN_TOKEN_ADDRESS = BlockchainAddress(
     '0x53bAFF6C5A3F2F578C78eC8e66464C31aF62A7D6')
 
 _SOURCE_BLOCKCHAIN = Blockchain.CELO
@@ -128,8 +128,8 @@ def forwarder_address():
 
 
 @pytest.fixture(scope='session')
-def pan_token_address():
-    return _PAN_TOKEN_ADDRESS
+def vsn_token_address():
+    return _VSN_TOKEN_ADDRESS
 
 
 @pytest.fixture(scope='session')

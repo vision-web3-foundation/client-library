@@ -2,18 +2,18 @@ import unittest.mock
 
 import pytest
 import semantic_version  # type: ignore
-from pantos.common.configuration import ConfigError
+from vision.common.configuration import ConfigError
 
-from pantos.client.library import _initialized
-from pantos.client.library import initialize_library
-from pantos.client.library.exceptions import ClientLibraryError
-from pantos.client.library.protocol import is_supported_protocol_version
+from vision.client.library import _initialized
+from vision.client.library import initialize_library
+from vision.client.library.exceptions import ClientLibraryError
+from vision.client.library.protocol import is_supported_protocol_version
 
 
 @pytest.mark.parametrize('mainnet', [False, True])
 @pytest.mark.parametrize('initialized', [False, True])
-@unittest.mock.patch('pantos.client.library._config')
-@unittest.mock.patch('pantos.client.library._load_config')
+@unittest.mock.patch('vision.client.library._config')
+@unittest.mock.patch('vision.client.library._load_config')
 def test_initialize_library_correct(mock_load_config, mock_config, initialized,
                                     mainnet, protocol_version):
     _initialized.value = initialized
@@ -30,7 +30,7 @@ def test_initialize_library_correct(mock_load_config, mock_config, initialized,
 
 
 @pytest.mark.parametrize('mainnet', [False, True])
-@unittest.mock.patch('pantos.client.library._load_config')
+@unittest.mock.patch('vision.client.library._load_config')
 def test_initialize_library_config_load_error(mock_load_config, mainnet):
     _initialized.value = False
     mock_load_config.side_effect = ConfigError('')
@@ -43,8 +43,8 @@ def test_initialize_library_config_load_error(mock_load_config, mainnet):
 
 
 @pytest.mark.parametrize('mainnet', [False, True])
-@unittest.mock.patch('pantos.client.library._config')
-@unittest.mock.patch('pantos.client.library._load_config')
+@unittest.mock.patch('vision.client.library._config')
+@unittest.mock.patch('vision.client.library._load_config')
 def test_initialize_library_unsupported_protocol_version(
         mock_load_config, mock_config, mainnet):
     _initialized.value = False
