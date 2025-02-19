@@ -16,6 +16,7 @@ from vision.client.library.protocol import \
 
 _initialized = _multiprocessing.Value(_ctypes.c_bool, False)
 
+
 def initialize_library(mainnet: bool) -> None:
     """Initialize the Vision client library. The function is thread-safe
     and performs the initialization only once at the first invocation.
