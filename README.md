@@ -1,20 +1,20 @@
-<img src="https://raw.githubusercontent.com/pantos-io/client-library/img/pantos-logo-full.svg" alt="Pantos logo" align="right" width="120" />
+<img src="https://raw.githubusercontent.com/vision-io/client-library/img/vision-logo-full.svg" alt="Vision logo" align="right" width="120" />
 
-[![CI](https://github.com/pantos-io/client-library/actions/workflows/ci.yaml/badge.svg?branch=main)](https://github.com/pantos-io/client-library/actions/workflows/ci.yaml)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=pantos-io_client-library2&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=pantos-io_client-library2)
+[![CI](https://github.com/vision-io/client-library/actions/workflows/ci.yaml/badge.svg?branch=main)](https://github.com/vision-io/client-library/actions/workflows/ci.yaml)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=vision-io_client-library2&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=vision-io_client-library2)
 
 
-# Pantos Client Library
+# Vision Client Library
 
 ## 1. Introduction
 
 ### 1.1 Overview
 
-Welcome to the documentation for Pantos Client Library, a powerful tool for engaging with the Pantos system. This documentation aims to provide developers with comprehensive information on how to use the features offered by the library.
+Welcome to the documentation for Vision Client Library, a powerful tool for engaging with the Vision system. This documentation aims to provide developers with comprehensive information on how to use the features offered by the library.
 
 ### 1.2 Features
 
-The Pantos Client Library API exposes the following functionalities:
+The Vision Client Library API exposes the following functionalities:
 
 1. Loading the private key from a keystore file
 2. Retrieve the service node bids
@@ -32,29 +32,29 @@ Please make sure that your development environment meets the following requireme
 
 The library requires a private key encrypted with a password. 
 
-Since, for the moment, the Pantos protocol supports only EVM blockchains, only an Ethereum account keystore file is sufficient. It can be created with tools such as https://vanity-eth.tk/.
+Since, for the moment, the Vision protocol supports only EVM blockchains, only an Ethereum account keystore file is sufficient. It can be created with tools such as https://vanity-eth.tk/.
 
-One of the most significant advantages of using Pantos is that the protocol has been designed to require minimal user friction when cross-chain operations are performed. Therefore, when using the Pantos products, you must top up your wallet only with PAN tokens.
+One of the most significant advantages of using Vision is that the protocol has been designed to require minimal user friction when cross-chain operations are performed. Therefore, when using the Vision products, you must top up your wallet only with VSN tokens.
 
 #### Python Version
 
-The Pantos Client Library supports **Python 3.12** or higher. Ensure that you have the correct Python version installed before the installation steps. You can download the latest version of Python from the official [Python website](https://www.python.org/downloads/).
+The Vision Client Library supports **Python 3.12** or higher. Ensure that you have the correct Python version installed before the installation steps. You can download the latest version of Python from the official [Python website](https://www.python.org/downloads/).
 
 
 
 ### 2.2 Pypi package
 
-The Pantos Client Library is available as a package from [Pypi](https://pypi.org/project/pantos-client-library/).
+The Vision Client Library is available as a package from [Pypi](https://pypi.org/project/vision-client-library/).
 
 ```bash
 $ virtualenv env
 $ source env/bin/activate
-$ pip install pantos-client-library
+$ pip install vision-client-library
 ```
 
 ### 2.3 Source code
 
-The Pantos Client Library has been tested with the library versions specified in **poetry.lock**.
+The Vision Client Library has been tested with the library versions specified in **poetry.lock**.
 
 #### Poetry
 
@@ -84,7 +84,7 @@ poetry config virtualenvs.in-project true
 Clone the repository to your local machine:
 
 ```bash
-$ git clone https://github.com/pantos-io/client-library.git
+$ git clone https://github.com/vision-io/client-library.git
 $ cd client-library
 ```
 
@@ -112,23 +112,23 @@ The following example leverages all the functionalities of the library:
 
 ```bash
 #! /usr/bin/env python
-"""Example usage of the Pantos client library.
+"""Example usage of the Vision client library.
 
 """
 import decimal
 import getpass
 import pathlib
 
-import pantos.client as pc
+import vision.client as pc
 
 # Example retrieval of token balance
 try:
     token_balance = pc.retrieve_token_balance(
         pc.Blockchain.POLYGON,
         pc.BlockchainAddress('0xaAE34Ec313A97265635B8496468928549cdd4AB7'),
-        pc.TokenSymbol('pan'))
+        pc.TokenSymbol('vsn'))
     print('Token balance: {}'.format(token_balance))
-except pc.PantosClientError:
+except pc.VisionClientError:
     # Handle exception
     raise
 
@@ -137,7 +137,7 @@ try:
     service_node_bids = pc.retrieve_service_node_bids(pc.Blockchain.AVALANCHE,
                                                       pc.Blockchain.CRONOS)
     print('Service node bids: {}'.format(service_node_bids))
-except pc.PantosClientError:
+except pc.VisionClientError:
     # Handle exception
     raise
 
@@ -155,9 +155,9 @@ try:
     token_transfer_response = pc.transfer_tokens(
         pc.Blockchain.ETHEREUM, pc.Blockchain.BNB_CHAIN, private_key,
         pc.BlockchainAddress('0xaAE34Ec313A97265635B8496468928549cdd4AB7'),
-        pc.TokenSymbol('pan'), decimal.Decimal('3.1'))
+        pc.TokenSymbol('vsn'), decimal.Decimal('3.1'))
     print(f'Token transfer response: {token_transfer_response}')
-except pc.PantosClientError:
+except pc.VisionClientError:
     # Handle exception
     raise
 
@@ -167,7 +167,7 @@ try:
         pc.Blockchain.ETHEREUM, token_transfer_response.service_node_address,
         token_transfer_response.task_id)
     print(f'Token transfer status: {token_transfer_status}')
-except pc.PantosClientError:
+except pc.VisionClientError:
     # Handle exception
     raise
 
@@ -179,13 +179,13 @@ try:
                                       password)
     deployment_blockchains = [pc.Blockchain.ETHEREUM]
     payment_blockchain = pc.Blockchain.ETHEREUM
-    task_id = pc.deploy_pantos_compatible_token('Test_cli', 'TCLI', 7, True,
+    task_id = pc.deploy_vision_compatible_token('Test_cli', 'TCLI', 7, True,
                                                 False, 54321,
                                                 deployment_blockchains,
                                                 payment_blockchain,
                                                 private_key)
     print('Task ID deployment: {}'.format(task_id))
-except pc.PantosClientError:
+except pc.VisionClientError:
     # Handle exception
     raise
 ```

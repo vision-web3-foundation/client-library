@@ -1,18 +1,18 @@
 import pytest
 
-from pantos.client.library.blockchains.base import BlockchainClient
-from pantos.client.library.constants import TOKEN_SYMBOL_PAN
+from vision.client.library.blockchains.base import BlockchainClient
+from vision.client.library.constants import TOKEN_SYMBOL_VSN
 
 
 @pytest.fixture(scope='package')
 def blockchain_config(chain_id, hub_address, forwarder_address,
-                      pan_token_address):
+                      vsn_token_address):
     return {
         'chain_id': chain_id,
         'hub': hub_address,
         'forwarder': forwarder_address,
         'tokens': {
-            TOKEN_SYMBOL_PAN: pan_token_address
+            TOKEN_SYMBOL_VSN: vsn_token_address
         }
     }
 

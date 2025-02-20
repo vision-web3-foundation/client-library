@@ -1,20 +1,20 @@
 import unittest.mock
 
 import pytest
-from pantos.common.blockchains.base import Blockchain
+from vision.common.blockchains.base import Blockchain
 
-from pantos.client.library.blockchains.avalanche import AvalancheClient
-from pantos.client.library.blockchains.base import BlockchainClient
-from pantos.client.library.blockchains.bnbchain import BnbChainClient
-from pantos.client.library.blockchains.celo import CeloClient
-from pantos.client.library.blockchains.cronos import CronosClient
-from pantos.client.library.blockchains.ethereum import EthereumClient
-from pantos.client.library.blockchains.factory import _blockchain_clients
-from pantos.client.library.blockchains.factory import get_blockchain_client
-from pantos.client.library.blockchains.polygon import PolygonClient
-from pantos.client.library.blockchains.solana import SolanaClient
-from pantos.client.library.blockchains.sonic import SonicClient
-from pantos.client.library.protocol import get_supported_protocol_versions
+from vision.client.library.blockchains.avalanche import AvalancheClient
+from vision.client.library.blockchains.base import BlockchainClient
+from vision.client.library.blockchains.bnbchain import BnbChainClient
+from vision.client.library.blockchains.celo import CeloClient
+from vision.client.library.blockchains.cronos import CronosClient
+from vision.client.library.blockchains.ethereum import EthereumClient
+from vision.client.library.blockchains.factory import _blockchain_clients
+from vision.client.library.blockchains.factory import get_blockchain_client
+from vision.client.library.blockchains.polygon import PolygonClient
+from vision.client.library.blockchains.solana import SolanaClient
+from vision.client.library.blockchains.sonic import SonicClient
+from vision.client.library.protocol import get_supported_protocol_versions
 
 
 @pytest.fixture(autouse=True)
