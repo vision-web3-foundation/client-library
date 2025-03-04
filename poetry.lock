@@ -3071,14 +3071,14 @@ test = ["covdefaults (>=2.3)", "coverage (>=7.2.7)", "coverage-enable-subprocess
 
 [[package]]
 name = "vision-common"
-version = "0.1.0"
+version = "0.1.1"
 description = "Common code for Vision-web3 off-chain components."
 optional = false
 python-versions = "<4.0,>=3.13"
 groups = ["main"]
 files = [
-    {file = "vision_common-0.1.0-py3-none-any.whl", hash = "sha256:9562e21438bde6a4734f3c39a00dcb60602ae7246ee52c19f7845978985842e2"},
-    {file = "vision_common-0.1.0.tar.gz", hash = "sha256:6243a8eb4d6f73f74e679fd36408d8bd5fc5984c580f471f1478f9209456f4de"},
+    {file = "vision_common-0.1.1-py3-none-any.whl", hash = "sha256:34a7002d19e92a4cdfe00a36c797e8e12a70235d467a41d5694a8fb1650d4c1f"},
+    {file = "vision_common-0.1.1.tar.gz", hash = "sha256:d6d8e51c50e85b99b57ddea7c99a4ff8331c257c5d4d4bfb4595158bc9e98310"},
 ]
 
 [package.dependencies]
@@ -3420,4 +3420,4 @@ propcache = ">=0.2.0"
 [metadata]
 lock-version = "2.1"
 python-versions = "^3.13"
-content-hash = "878e5675e364d0d15f4f092190ad189ab7b71589efcbb53ac15f55de239fa9e8"
+content-hash = "9d10dffbb387ce56daa03c451a175bec535633c0b560f354e019e7f3bc816efb"
