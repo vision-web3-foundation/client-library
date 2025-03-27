@@ -1,7 +1,7 @@
-<img src="https://raw.githubusercontent.com/vision-io/client-library/img/vision-logo-full.svg" alt="Vision logo" align="right" width="120" />
+<img src="https://raw.githubusercontent.com/vision-web3-foundation/client-library/img/vision-logo.png" alt="Vision logo" align="right" width="120" />
 
-[![CI](https://github.com/vision-io/client-library/actions/workflows/ci.yaml/badge.svg?branch=main)](https://github.com/vision-io/client-library/actions/workflows/ci.yaml)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=vision-io_client-library2&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=vision-io_client-library2)
+[![CI](https://github.com/vision-web3-foundation/client-library/actions/workflows/ci.yaml/badge.svg?branch=main)](https://github.com/vision-web3-foundation/client-library/actions/workflows/ci.yaml)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=vision-web3-foundation_client-library2&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=vision-web3-foundation_client-library)
 
 
 # Vision Client Library
