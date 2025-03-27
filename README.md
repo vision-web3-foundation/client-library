@@ -84,7 +84,7 @@ poetry config virtualenvs.in-project true
 Clone the repository to your local machine:
 
 ```bash
-$ git clone https://github.com/vision-io/client-library.git
+$ git clone https://github.com/vision-web3-foundation/client-library.git
 $ cd client-library
 ```
 
