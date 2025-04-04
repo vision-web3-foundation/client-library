@@ -2,7 +2,7 @@
 name = "vision-client-library"
 version = "0.2.0"
 description = "Client library for engaging with the Vision system"
-authors = ["Vision XXX <contact@XXX>"]
+authors = ["Vision XXX <contact@notemail.com>"]
 license = "GPL-3.0-only"
 readme = "README.md"
 packages = [
